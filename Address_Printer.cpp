@@ -24,7 +24,16 @@ char* ptr4{&charizard};
 
 
 int main() {
-std::cout<<"integer:"<<integer<<"\nboolean:"<<boolean<<"\ndouble:"<<doble<<"\nchar:"<<charizard;
-std::cout<<"integer memory:"<<&integer<<"\nboolean memory:"<<&boolean<<"\ndouble memory:"<<&doble<<"\nchar memory:"<<&charizard;
+std::cout<<"integer:"<<integer<<"\nboolean:"<<boolean<<"\ndouble:"<<doble<<"\nchar:"<<charizard; //task1
+std::cout<<"integer memory:"<<&integer<<"\nboolean memory:"<<&boolean<<"\ndouble memory:"<<&doble<<"\nchar memory:"<<&charizard; //task2
+
+//task4
+std::cout<<"\ninteger:"<<integer;
+std::cout<<"\ninteger_pointer:"<<*ptr1;
+
+*ptr1=6;
+
+std::cout<<"\ninteger:"<<integer;
+std::cout<<"\nInteger_pointer:"<<*ptr1;
 
 return 0;}
