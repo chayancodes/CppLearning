@@ -4,7 +4,7 @@
 // task2: Print each variable's value and its memory address using &. - done
 // task3: Create a pointer to each - done
 // task4: Modify each variable through its pointer and print again. -done
-// task5: Create a reference to the int and show that changing the reference changes the original
+// task5: Create a reference to the int and show that changing the reference changes the original - done
 // refrences - int&
 // pointers - int*
 
