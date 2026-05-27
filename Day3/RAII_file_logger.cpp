@@ -4,3 +4,27 @@
 // task2: Comment out the destructor — run it — notice the file may not flush. Restore it.
 // task3: Wrap a Logger in a unique_ptr and confirm the file still closes when the pointer goes out of scope.
 // task4: All write() calls must be const-correct.
+
+//file access:
+#include <fstream>
+#include <string>
+
+class Logger {  
+    std::ofstream file;
+    public:
+    Logger() {
+        file.open("log.txt", std::ios::app);
+    };
+    void write(std::string msg) {
+        file<<msg<<"\n";
+    };
+    ~Logger() {
+        file.close();
+    };
+};
+
+int main() {
+    Logger log;
+    log.write("hello");
+    log.write("world");
+}
