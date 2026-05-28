@@ -4,7 +4,7 @@
 //task2 : Add a get_filename() const method. - done
 //task3 : Then write a free function that takes a const Logger& and calls get_filename() — confirm it compiles. - done
 //task4 : Try calling a non-const method on a const reference — read the compiler error carefully. - done
-//task5 : Add a const int MAX_LINES = 100 and enforce it in write().
+//task5 : Add a const int MAX_LINES = 100 and enforce it in write(). -done 
 
 #include <fstream>
 #include <string>
