@@ -13,6 +13,8 @@
 
 class Logger {  
     mutable std::ofstream file;
+    mutable int line_count=0;
+    const int Max_lines=100;
     std::string filename;
     public:
     Logger(std::string name) {
@@ -23,7 +25,13 @@ class Logger {
         return filename;
     };
     void write(std::string msg) const {
-        file<<msg<<"\n";
+        if (line_count>=Max_lines) {
+            std::cout<<"logger full, max"<<Max_lines<<" lines reached\n";
+            return;
+        } else {
+            file<<msg<<"\n";
+            line_count++;
+        };
     };
     ~Logger() {
        file.close();
