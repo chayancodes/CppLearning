@@ -13,9 +13,14 @@
 
 class Logger {  
     mutable std::ofstream file;
+    std::string filename;
     public:
-    Logger() {
-        file.open("log.txt", std::ios::app);
+    Logger(std::string name) {
+        filename=name;
+        file.open(name, std::ios::app);
+    };
+    std::string get_filename() const {
+        return filename;
     };
     void write(std::string msg) const {
         file<<msg<<"\n";
@@ -26,7 +31,7 @@ class Logger {
 };
 
 int main() {
-    {std::unique_ptr<Logger> log=std::make_unique<Logger>();
+    {std::unique_ptr<Logger> log=std::make_unique<Logger>("log.txt");
     log->write("hello from unique_ptr");};
     std::cout << "past the block, file should be closed now\n";
     
