@@ -2,8 +2,8 @@
 // Claude roadmap 
 // task1: Create a std::vector of 8 strings. - done
 // task2: Traverse it 3 ways: range-for, index loop, and explicit iterator (auto it = v.begin()). - done
-// task3: For the iterator version, use std::advance to jump 2 positions forward, then walk backwards using a reverse_iterator (rbegin/rend). 
-// task4: Print traversal order for all 3. Confirm they match
+// task3: For the iterator version, use std::advance to jump 2 positions forward, then walk backwards using a reverse_iterator (rbegin/rend). - done
+// task4: Print traversal order for all 3. Confirm they match - done
 
 #include <vector>
 #include <iostream>
@@ -26,4 +26,14 @@ int main() {
         std::cout<<*itr<<"\n";
     };
 
+
+    //task3 std::advance:
+    auto it=eightnum.begin();
+    std::advance(it,2);
+    std::cout<<"after advancing:"<<*it<<"\n";
+
+    // task3 reverse iterator:
+    for (auto itrr=eightnum.rbegin(); itrr!=eightnum.rend(); ++itrr) {
+        std::cout<<*itrr<<"\n";
+    }
 }
