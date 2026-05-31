@@ -5,7 +5,7 @@
 // task3: Time 1000 random searches of each using std::chrono::high_resolution_clock. - done 
 // task4: Print average microseconds per search. - done
 // task5: Then introduce a deliberate off-by-one bug in binary search, compile with -g, open gdb, set a breakpoint at the search function, 
-// task5(cont): and step through until you find it.
+// task5(cont): and step through until you find it. - done
 
 
 #include <iostream>
@@ -34,7 +34,7 @@ int binry_search(std::vector<int>& integrs, int target) {
     int high=integrs.size()-1;
     int low=0;
     while (low<=high) {
-        int mid=low+(high-low)/2;
+        int mid=low+(high-low)/2+1; // error generation
         if (integrs[mid]==target) {
             return mid;
         } else if (integrs[mid]>target) {
