@@ -7,28 +7,30 @@
 // task5: Then introduce a deliberate off-by-one bug in binary search, compile with -g, open gdb, set a breakpoint at the search function, 
 // task5(cont): and step through until you find it.
 
-#include <array>
+
 #include <iostream>
 #include <cmath>
+#include <chrono>
+#include <vector>
+#include <random>
 
 //universal variables
-std::array integrs={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-int target=3;
-
-//variables for binary search
-int high=integrs.size()-1;
-int low=0;
+std::vector<int> integrs;
+std::mt19937 rng(std::random_device{}()); // random engine for target
+std::uniform_int_distribution<int> dist(0,1000); //range: 0 to 1k
 
 
-int main() {
-    // linear search
+int linear_search(std::vector<int>& integrs,int target) {
     for (int i=0; i<=integrs.size(); ++i) {
         if (integrs[i]==target) {
-            std::cout<<"Target found at:"<<i<<"th index";
-            break;
+            return i;
         };
     };
-    // binary search
+};
+
+int binary_search(std::vector<int>& integrs, int target) {
+    int high=integrs.size()-1;
+    int low=0;
     while (low<=high) {
         int mid=low+(high-low)/2;
         if (integrs[mid]==target) {
@@ -40,5 +42,31 @@ int main() {
            low=mid+1;
         }
     }
+}
+
+
+int main() {
+    // array initialization(loop)
+    integrs.reserve(1000000); //this makes it so it doesnt reallocate. maybe.
+    for (int i=0; i<1000000; i++) {
+        integrs.push_back(i);
+    }
+    // linear search loop
+    for (int i; i<1000; i++) {
+        int target=dist(rng); // new target per iteration
+        auto start=std::chrono::high_resolution_clock::now();
+        int lin=linear_search(integrs,target);
+        auto end=std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    };
+    
+    // binary search
+    for (int i; i<1000; i++) {
+        int target=dist(rng); // new target per iteration
+        auto start=std::chrono::high_resolution_clock::now();
+        int bin=binary_search(integrs,target);
+        auto end=std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    };
 
 }
