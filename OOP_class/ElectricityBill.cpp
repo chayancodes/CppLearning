@@ -15,8 +15,15 @@ class ElectricityBill {
     void display(){
         cout<<"Units consumed: "<<Units_Consumed<<" Bill: "<<bill<<endl;
     }
+    void insert(string name,float Units){
+        Consumer_name=name;
+        Units_Consumed=Units;
+    }
 };
 
 int main() {
-    
+    ElectricityBill B1;
+    B1.insert("Apex",52.0);
+    B1.CalculateBill();
+    B1.display();
 }
